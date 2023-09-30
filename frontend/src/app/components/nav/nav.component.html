@@ -1,0 +1,47 @@
+<mat-sidenav-container class="container">
+    <mat-sidenav class="sidenav" mode="side" opened
+    fixedInViewport="true" fixedTopGap="64">
+        <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/internal/home">
+                <div class="item">
+                    <i class="material-icons">
+                        home
+                    </i>
+                    <span>Início</span>
+                </div>
+            </a>
+            <a mat-list-item  routerLink="/internal/relatorio">
+                <div class="item">
+                    <i class="material-icons">
+                        library_books
+                    </i>
+                    <span>Relátorios</span>
+                </div>
+            </a>
+            <a mat-list-item  routerLink="/internal/usuario">
+                <div class="item">
+                    <i class="material-icons">
+                        group
+                    </i>
+                    <span>Usuários</span>
+                </div>
+            </a>
+            <a mat-list-item  routerLink="/internal/veiculo">
+                <div class="item">
+                    <i class="material-icons">
+                        directions_car
+                    </i>
+                    <span>Veiculos</span>
+                </div>
+            </a>
+        </mat-nav-list>
+        <div class="cefet">
+            <img class="logo-cefet" src="assets/img/logo-cefet.png" alt="logo">
+        </div>
+    </mat-sidenav>
+    
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>
+        
+    </mat-sidenav-content>
+</mat-sidenav-container>

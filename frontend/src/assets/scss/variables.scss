@@ -1,0 +1,38 @@
+//Background
+$background-color: linear-gradient(135deg, #191e26 1.93%, #353f55 90.84%);
+$background-card: linear-gradient(323.73deg, #4e4af2 20.23%, #30dbe6 143.43%);
+$card-shadow: rgba(0, 0, 0, 0.263358);
+
+//Alerts
+$success: linear-gradient(328.4deg, #44ee74 -1.45%, #353f55 171.69%);
+$info: linear-gradient(328.4deg, #447cee -1.45%, #353f55 171.69%);
+$warning: linear-gradient(
+    328.4deg,
+    rgba(255, 230, 0, 0.95) -1.45%,
+    rgba(53, 63, 85, 0.95) 171.69%
+);
+$error: linear-gradient(328.4deg, #ef2f2f -1.45%, #353f55 171.69%);
+
+//Buttons
+$button-blue: linear-gradient(350deg, #4e4af2 7%, #30dbe6 150%);
+$button-red: linear-gradient(
+    330.47deg,
+    rgba(242, 74, 74, 0.68) 7.57%,
+    #e63030 125.28%
+);
+
+//Field Fill
+$field-fill: linear-gradient(328.4deg, #191e26 -1.45%, #353f55 171.69%);
+$modal: #191E26;
+
+//Status
+$concluded: #32d399;
+$open: #f3ae45;
+$analysis: #3899f2;
+
+//Text
+$font-color-highlighted: #eaeaea;
+$font-color-main: #909aad;
+$font-color-secondary: #c3c8d0;
+$font-color-interactive: #39b3ea;
+$font-color-state: #222935;

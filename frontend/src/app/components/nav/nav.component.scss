@@ -1,0 +1,31 @@
+.sidenav {
+    background-color: #0f172a;
+    width: 200px;
+}
+
+.sidenav i {
+    padding-right: 10px;
+}
+
+.content {
+    padding: 16px;
+    background-color: #fff;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.cefet{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-cefet{
+    width: 80px;
+}
