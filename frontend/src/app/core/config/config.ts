@@ -24,6 +24,7 @@ export const Config = {
     rotaVeiculoObtemTodos: 'veiculo/getAll',
     rotaVeiculoObtem: 'veiculo/getOne',
     rotaVeiculoCria: 'veiculo/create',
+    rotaVeiculoCriaAll: 'veiculo/createAll',
     rotaVeiculoEdita: 'veiculo/edit',
     rotaVeiculoDeleta: 'veiculo/delete',
     

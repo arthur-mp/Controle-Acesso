@@ -8,6 +8,8 @@ public interface IVeiculoServico {
 
     VeiculoDTO create(VeiculoDTO veiculoDTO);
 
+    List<VeiculoDTO> createAll(List<VeiculoDTO> veiculoDTOList);
+
     VeiculoDTO edit(VeiculoDTO veiculoDTO);
 
     VeiculoDTO getOne(String idVeiculo);

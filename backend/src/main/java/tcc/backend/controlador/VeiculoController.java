@@ -29,6 +29,11 @@ public class VeiculoController {
         return ResponseEntity.ok(veiculoServico.create(request));
     }
 
+    @PostMapping("/createAll")
+    public ResponseEntity<List<VeiculoDTO>> createAll(@RequestBody List<VeiculoDTO> veiculos){
+        return ResponseEntity.ok(veiculoServico.createAll(veiculos));
+    }
+
     @PutMapping("/edit")
     public ResponseEntity<VeiculoDTO> edit(@RequestBody VeiculoDTO request){
         return ResponseEntity.ok(veiculoServico.edit(request));

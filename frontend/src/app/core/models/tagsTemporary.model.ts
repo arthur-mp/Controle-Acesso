@@ -1,4 +1,4 @@
 export interface TagsTemporary{
-    id: String;
-    codeTag: String;
+    id: string;
+    codeTag: string;
 }

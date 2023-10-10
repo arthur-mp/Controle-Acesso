@@ -1,6 +1,9 @@
+@import "../../../assets/scss/variables.scss";
+
 .header{
     display: flex;
     align-items: center;
+    background-image: $background-color !important;
 }
 
 .header a {
@@ -11,12 +14,14 @@
 
 .header .logo {
     max-height: 32px;
+    filter: invert(1);
 }
 
 .header .title-group {
     padding-left: 25px;
     display: flex;
     align-items: center;
+    color: $font-color-highlighted;
 }
 
 .header .container-title{

@@ -1,8 +1,8 @@
 export interface Veiculo{
-    id: String;
-    modelo: String;
-    marca: String;
-    placa: String;
-    cor: String;
-    usuarioId: String;
+    id: string;
+    modelo: string;
+    marca: string;
+    placa: string;
+    cor: string;
+    usuarioId: string;
 }

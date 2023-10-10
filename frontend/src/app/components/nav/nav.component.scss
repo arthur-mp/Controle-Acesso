@@ -1,5 +1,7 @@
+@import "../../../assets/scss/variables.scss";
+
 .sidenav {
-    background-color: #0f172a;
+    background-image: $background-color !important;
     width: 200px;
 }
 

@@ -1,11 +1,11 @@
 export interface Users{
-    id: String;
-    nome: String;
-    sobrenome: String;
-    telefone: String;
-    matricula: String;
-    email: String;
-    senha: String;
-    codigoTag: String;
-    veiculosId: String[];
+    id: string;
+    nome: string;
+    sobrenome: string;
+    telefone: string;
+    matricula: string;
+    email: string;
+    senha: string;
+    codigoTag: string;
+    veiculosId: string[];
 }

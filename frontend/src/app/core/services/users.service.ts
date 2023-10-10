@@ -54,13 +54,11 @@ export class UsersService{
     // Deleta Users
     deleta(users: Users): Observable<Users>{
 
-        const options = {
-            headers: this._headers,
-            body: users
-        }
 
-        return this._httpClient
-            .delete<Users>(this._urlPublic + Config.rotaUserDeleta, options);
+        let httpParams = new HttpParams();
+        httpParams = httpParams.append(Config.parametroId, users.id);
+
+        return this._httpClient.delete<Users>(this._urlPublic + Config.rotaUserDeleta, { params: httpParams });
     }
 
 

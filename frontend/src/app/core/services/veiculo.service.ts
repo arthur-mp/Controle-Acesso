@@ -38,6 +38,12 @@ export class VeiculoService{
             .post<Veiculo>(this._urlPublic + Config.rotaVeiculoCria, veiculo, { headers: this._headers});
     } 
 
+    // Cria varios Veiculos
+    criaAll(veiculos: Veiculo[]): Observable<Veiculo[]>{
+        return this._httpClient
+            .post<Veiculo[]>(this._urlPublic + Config.rotaVeiculoCriaAll, veiculos, { headers: this._headers});
+    } 
+
     // Atualiza Veiculo
     atualiza(veiculo: Veiculo): Observable<Veiculo>{
         return this._httpClient
@@ -47,13 +53,10 @@ export class VeiculoService{
     // Deleta Veiculo
     deleta(veiculo: Veiculo): Observable<Veiculo>{
 
-        const options = {
-            headers: this._headers,
-            body: veiculo
-        }
+        let httpParams = new HttpParams();
+        httpParams = httpParams.append(Config.parametroId, veiculo.id);
 
-        return this._httpClient
-            .delete<Veiculo>(this._urlPublic + Config.rotaVeiculoDeleta, options);
+        return this._httpClient.delete<Veiculo>(this._urlPublic + Config.rotaVeiculoDeleta, { params: httpParams });
     }
 
 

@@ -1,1 +1,134 @@
-<p>detalhes works!</p>
+<div class="container">
+    <div class="create">
+        <h1>Cadastro novo usuário</h1>
+        <form [formGroup]="usuarioForm">
+
+            <div class="contant-1">
+                <!-- Nome -->
+                <div class="content-nome">
+                    <mat-form-field class="nome">
+                        <mat-label>Nome</mat-label>
+                        <mat-icon matPrefix class="icon-nome" fontIcon="account_circle"></mat-icon>
+                        <input matInput [formControlName]="'nome'" [placeholder]="'Nome'" [spellcheck]="false" />
+                    </mat-form-field>
+                </div>
+
+                <!-- Sobrenome -->
+                <div class="content-sobrenome">
+                    <mat-form-field class="sobrenome">
+                        <mat-label>Sobrenome</mat-label>
+                        <mat-icon matPrefix class="icon-sobrenome" fontIcon="account_circle"></mat-icon>
+                        <input matInput [formControlName]="'sobrenome'" [placeholder]="'Sobrenome'"
+                            [spellcheck]="false" />
+                    </mat-form-field>
+                </div>
+
+                <!-- Matricula -->
+                <div class="content-matricula">
+                    <mat-form-field class="matricula">
+                        <mat-label>Matricula</mat-label>
+                        <mat-icon matPrefix class="icon-matricula" fontIcon="assignment_ind"></mat-icon>
+                        <input matInput [formControlName]="'matricula'" [placeholder]="'Matricula'"
+                            [spellcheck]="false" />
+                    </mat-form-field>
+                </div>
+
+               
+            </div>
+
+            <div class="contant-2">
+                
+                <!-- Email -->
+                <div class="content-email">
+                    <mat-form-field class="email">
+                        <mat-label>Email</mat-label>
+                        <mat-icon matPrefix class="icon-email" fontIcon="mail"></mat-icon>
+                        <input matInput [formControlName]="'email'" [placeholder]="'Email'" [spellcheck]="false" />
+                    </mat-form-field>
+                </div>
+
+                 <!-- Telefone -->
+                 <div class="content-telefone">
+                    <mat-form-field class="telefone">
+                        <mat-label>Telefone</mat-label>
+                        <mat-icon matPrefix class="icon-telefone" fontIcon="phone"></mat-icon>
+                        <input matInput [formControlName]="'telefone'" [placeholder]="'Telefone'"
+                            [spellcheck]="false" />
+                    </mat-form-field>
+                </div>
+
+                 <!-- CodigoTag -->
+                 <div class="content-codigoTag">
+                    <mat-form-field class="codigoTag">
+                        <mat-label>Codigo Tag</mat-label>
+                        <mat-icon matPrefix class="icon-codigoTag" fontIcon="nfc"></mat-icon>
+                        <input matInput [formControlName]="'codigoTag'" [placeholder]="'Codigo Tag'"
+                            [spellcheck]="false" />
+                    </mat-form-field>
+                </div>
+
+                
+            </div>
+
+            <div class="section-veiculo">
+                <h1>Cadastro veículo</h1>
+
+                <button mat-raised-button color="primary" (click)="adicionarVeiculo()">Adicionar veiculo</button>
+            </div>
+
+
+            <div class="lista-veiculos">
+                <div *ngFor="let novoVeiculo of getVeiculosForm(); let i = index">
+                    <div class="content-3">
+                        <mat-form-field class="modelo">
+                            <mat-label>Modelo</mat-label>
+                            <mat-icon matPrefix class="icon-modelo" fontIcon="directions_car"></mat-icon>
+                            <input matInput [formControl]="getVeiculoControl(novoVeiculo, 'modelo')" [placeholder]="'Modelo'"
+                                [spellcheck]="false" />
+                        </mat-form-field>
+        
+                        <mat-form-field class="marca">
+                            <mat-label>Marca</mat-label>
+                            <mat-icon matPrefix class="icon-marca" fontIcon="category"></mat-icon>
+                            <input matInput [formControl]="getVeiculoControl(novoVeiculo, 'marca')" [placeholder]="'Marca'"
+                                [spellcheck]="false" />
+                        </mat-form-field>
+        
+                        <mat-form-field class="placa">
+                            <mat-label>Placa</mat-label>
+                            <mat-icon matPrefix class="icon-placa" fontIcon="nfc"></mat-icon>
+                            <input matInput [formControl]="getVeiculoControl(novoVeiculo, 'placa')" [placeholder]="'Placa'"
+                                [spellcheck]="false" />
+                        </mat-form-field>
+        
+                        <mat-form-field class="cor">
+                            <mat-label>Cor</mat-label>
+                            <mat-icon matPrefix class="icon-cor" fontIcon="palette"></mat-icon>
+                            <input matInput [formControl]="getVeiculoControl(novoVeiculo, 'cor')" [placeholder]="'Cor'"
+                                [spellcheck]="false" />
+                        </mat-form-field>
+    
+                        <div class="delete-veiculo">
+                            <button mat-fab color="primary" aria-label="Deletar veículo" (click)="deleteVeiculo(i)">
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          </div>
+    
+    
+                    </div>
+                </div>
+    
+            </div>
+
+            <div class="buttons">
+                <button class="button-salvar" mat-raised-button color="primary" (click)="salvar()" [disabled]="!usuarioForm.valid">Salvar</button>
+                <button mat-raised-button color="primary" (click)="deletar()" *ngIf="!isCreateUser">Deletar</button>
+            </div>
+
+            
+        </form>
+
+        
+    </div>
+
+</div>

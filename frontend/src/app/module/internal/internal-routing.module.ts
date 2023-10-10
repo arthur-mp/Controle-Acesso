@@ -6,7 +6,7 @@ import { RelatorioComponent } from './relatorio/relatorio.component';
 const routes: Routes = [
   {
     path: '', component: InternalComponent, children: [
-      { path: 'home', component: HomeComponent },
+      { path: '', component: HomeComponent },
       { path: 'relatorio', component: RelatorioComponent },
       {
         path: "usuario",

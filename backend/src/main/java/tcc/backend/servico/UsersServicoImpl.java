@@ -79,9 +79,9 @@ public class UsersServicoImpl implements IUsersServico{
     private UsersDTO createOrEdit(UsersDTO usersDTO){
         Users novoUser = userDTOToUser(usersDTO);
 
-        Users veiculo = usersRepositorio.save(novoUser);
+        Users user = usersRepositorio.save(novoUser);
 
-        UsersDTO userDTOCriado = userToUserDTO(veiculo);
+        UsersDTO userDTOCriado = userToUserDTO(user);
 
         return userDTOCriado;
     }
@@ -93,12 +93,10 @@ public class UsersServicoImpl implements IUsersServico{
         userDTO.setSobrenome(user.getSobrenome());
         userDTO.setTelefone(user.getTelefone());
         userDTO.setMatricula(user.getMatricula());
-        userDTO.setMatricula(user.getMatricula());
         userDTO.setEmail(user.getEmail());
         userDTO.setCodigoTag(user.getCodigoTag());
         userDTO.setSenha(user.getSenha());
         userDTO.setVeiculosId(user.getVeiculosId());
-        userDTO.setUsagesId(user.getUsagesId());
 
         return userDTO;
     };
@@ -110,12 +108,10 @@ public class UsersServicoImpl implements IUsersServico{
         user.setSobrenome(userDTO.getSobrenome());
         user.setTelefone(userDTO.getTelefone());
         user.setMatricula(userDTO.getMatricula());
-        user.setMatricula(userDTO.getMatricula());
         user.setEmail(userDTO.getEmail());
         user.setCodigoTag(userDTO.getCodigoTag());
         user.setSenha(userDTO.getSenha());
         user.setVeiculosId(userDTO.getVeiculosId());
-        user.setUsagesId(userDTO.getUsagesId());
 
         return user;
     }

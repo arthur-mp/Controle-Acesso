@@ -21,6 +21,18 @@ public class VeiculoServicoImpl implements IVeiculoServico{
     public VeiculoDTO create(VeiculoDTO veiculoDTO) {
         return createOrEdit(veiculoDTO);
     }
+
+    @Override
+    public List<VeiculoDTO> createAll(List<VeiculoDTO> veiculoDTOList){
+        List<VeiculoDTO> list = new ArrayList<>();
+
+        for (int i = 0; i < veiculoDTOList.size(); i++) {
+            list.add(create(veiculoDTOList.get(i)));
+        }
+
+        return  list;
+    }
+
     @Override
     public VeiculoDTO edit(VeiculoDTO veiculoDTO) {
         return createOrEdit(veiculoDTO);
@@ -86,7 +98,7 @@ public class VeiculoServicoImpl implements IVeiculoServico{
 
     private Veiculo veiculoDTOToVeiculo(VeiculoDTO veiculoDTO){
         Veiculo veiculo = new Veiculo();
-        if(!veiculoDTO.getId().isEmpty()) veiculo.setId(veiculoDTO.getId());
+        if(veiculoDTO.getId() != null && !veiculoDTO.getId().isEmpty()) veiculo.setId(veiculoDTO.getId());
         veiculo.setModelo(veiculoDTO.getModelo());
         veiculo.setCor(veiculoDTO.getCor());
         veiculo.setPlaca(veiculoDTO.getPlaca());

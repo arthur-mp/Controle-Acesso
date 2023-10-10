@@ -1,0 +1,44 @@
+.container{
+    height: 33rem;
+}
+
+.container .create .contant-1,
+.container .create .contant-2{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container .create .contant-1 .content-nome .nome,
+.container .create .contant-1 .content-sobrenome .sobrenome,
+.container .create .contant-2 .content-telefone .telefone,
+.container .create .contant-1 .content-matricula .matricula,
+.container .create .contant-2 .content-email .email,
+.container .create .contant-2 .content-codigoTag .codigoTag{
+    width: 20rem;
+    margin-right: 2rem;
+}
+
+.container .create .section-veiculo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .create .content-3{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .create .lista-veiculos{
+    height: 15rem;
+    overflow: auto;
+}
+
+.container .create .buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.container .create .buttons .button-salvar{
+    margin-right: 1rem;
+}

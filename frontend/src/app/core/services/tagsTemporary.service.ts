@@ -46,14 +46,11 @@ export class TagsTemporaryService{
 
     // Deleta TagsTemporary
     deleta(tagsTemporary: TagsTemporary): Observable<TagsTemporary>{
+        
+        let httpParams = new HttpParams();
+        httpParams = httpParams.append(Config.parametroId, tagsTemporary.id);
 
-        const options = {
-            headers: this._headers,
-            body: tagsTemporary
-        }
-
-        return this._httpClient
-            .delete<TagsTemporary>(this._urlPublic + Config.rotaTagsTemporaryDeleta, options);
+        return this._httpClient.delete<TagsTemporary>(this._urlPublic + Config.rotaTagsTemporaryDeleta, { params: httpParams });
     }
 
 

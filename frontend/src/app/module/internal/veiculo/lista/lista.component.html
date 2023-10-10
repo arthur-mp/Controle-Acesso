@@ -1,1 +1,39 @@
-<p>lista veiculos!</p>
+<div class="container">
+    <div class="container-header">
+        <div class="header">
+            <div class="title">
+                Veículos
+            </div>
+            <div class="subtitle">
+                {{listVeiculos.length}} usuários
+            </div>
+        </div>
+    </div>
+    <div class="container-table">
+        <table mat-table [dataSource]="listVeiculos" class="mat-elevation-z8">
+    
+            <ng-container matColumnDef="modelo">
+                <th mat-header-cell *matHeaderCellDef> Modelo </th>
+                <td mat-cell *matCellDef="let element"> {{element.modelo}}</td>
+            </ng-container>
+            
+            <ng-container matColumnDef="marca">
+                <th mat-header-cell *matHeaderCellDef> Marca </th>
+                <td mat-cell *matCellDef="let element"> {{element.marca}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="placa">
+                <th mat-header-cell *matHeaderCellDef> Placa </th>
+                <td mat-cell *matCellDef="let element"> {{element.placa}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="cor">
+                <th mat-header-cell *matHeaderCellDef> Cor </th>
+                <td mat-cell *matCellDef="let element"> {{element.cor}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row (click)="abrirDetalhesVeiculo(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+    </div>
+</div>
