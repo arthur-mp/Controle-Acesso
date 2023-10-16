@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="container-header">
+        <div class="header">
+            <div class="title">
+                Tags Temporarias
+            </div>
+            <div class="subtitle">
+                {{listTags.length}} tags
+            </div>
+        </div>
+    </div>
+    <div class="container-table">
+        <table mat-table [dataSource]="listTags" class="mat-elevation-z8">
+    
+            <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let element"> {{element.codeTag}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row (click)="abrirDetalhesTag(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+    </div>
+</div>

@@ -6,13 +6,22 @@ import { MatButtonModule } from "@angular/material/button";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from "@angular/router";
+import { DialogSelectUserComponent } from './dialog-select-user/dialog-select-user.component';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import {NgIf} from '@angular/common';
+import { NgFor } from "@angular/common";
 
 
 @NgModule({
     declarations: [
         HeaderComponent,
-        NavComponent
+        NavComponent,
+        DialogSelectUserComponent
     ],
     imports: [
         RouterModule,
@@ -21,6 +30,13 @@ import { RouterModule } from "@angular/router";
         MatToolbarModule,
         MatSidenavModule,
         MatListModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        NgFor,
+        NgIf
     ],
     exports: [
         HeaderComponent,

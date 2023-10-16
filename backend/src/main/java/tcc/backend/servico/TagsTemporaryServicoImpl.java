@@ -62,8 +62,8 @@ public class TagsTemporaryServicoImpl implements ITagsTemporaryServico{
         }
         return null;
     }
-    private TagsTemporaryDTO createOrEdit(TagsTemporaryDTO veiculoDTO){
-        TagsTemporary novoTagsTemporary = tagTemporaryDTOToTagsTemporary(veiculoDTO);
+    private TagsTemporaryDTO createOrEdit(TagsTemporaryDTO tagsTemporaryDTODTO){
+        TagsTemporary novoTagsTemporary = tagTemporaryDTOToTagsTemporary(tagsTemporaryDTODTO);
 
         TagsTemporary tagsTemporary = tagsTemporaryRepositorio.save(novoTagsTemporary);
 
@@ -75,7 +75,7 @@ public class TagsTemporaryServicoImpl implements ITagsTemporaryServico{
     private TagsTemporaryDTO tagTemporaryToTagsTemporaryDTO(TagsTemporary tagsTemporary){
         TagsTemporaryDTO tagsTemporaryDTO = new TagsTemporaryDTO();
         if(!tagsTemporary.getId().isEmpty()) tagsTemporaryDTO.setId(tagsTemporary.getId());
-        tagsTemporaryDTO.setCodeTag(tagsTemporary.getId());
+        tagsTemporaryDTO.setCodeTag(tagsTemporary.getCodeTag());
 
         return tagsTemporaryDTO;
     };
@@ -83,7 +83,7 @@ public class TagsTemporaryServicoImpl implements ITagsTemporaryServico{
     private TagsTemporary tagTemporaryDTOToTagsTemporary(TagsTemporaryDTO tagsTemporaryDTO){
         TagsTemporary tagsTemporary = new TagsTemporary();
         if(!tagsTemporaryDTO.getId().isEmpty()) tagsTemporary.setId(tagsTemporaryDTO.getId());
-        tagsTemporary.setCodeTag(tagsTemporaryDTO.getId());
+        tagsTemporary.setCodeTag(tagsTemporaryDTO.getCodeTag());
 
         return tagsTemporary;
     }

@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Selecione o usuário para associar a tag</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Usuários</mat-label>
+        <mat-select [(ngModel)]="selectedUser" name="user">
+          <mat-option *ngFor="let user of listUsers" [value]="user">
+            {{user.nome}} {{user.sobrenome}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="salvar()">Salvar</button>
+</div>

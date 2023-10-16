@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { InternalComponent } from './internal.component';
 import { HomeComponent } from './home/home.component';
 import { RelatorioComponent } from './relatorio/relatorio.component';
+import { TagTemporaryComponent } from './tag-temporary/tag-temporary.component';
 const routes: Routes = [
   {
     path: '', component: InternalComponent, children: [
       { path: '', component: HomeComponent },
       { path: 'relatorio', component: RelatorioComponent },
+      { path: 'tagTemporaria', component: TagTemporaryComponent},
       {
         path: "usuario",
         loadChildren: () =>
