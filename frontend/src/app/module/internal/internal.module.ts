@@ -10,6 +10,9 @@ import { RelatorioComponent } from './relatorio/relatorio.component';
 import { TagTemporaryComponent } from './tag-temporary/tag-temporary.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSlideToggleModule, _MatSlideToggleRequiredValidatorModule} from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,11 @@ import { MatDividerModule } from '@angular/material/divider';
     ComponentsModule,
     MatCardModule,
     MatTableModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSlideToggleModule,
+    _MatSlideToggleRequiredValidatorModule,
+    MatButtonModule,
+    FormsModule
   ]
 })
 export class InternalModule { }

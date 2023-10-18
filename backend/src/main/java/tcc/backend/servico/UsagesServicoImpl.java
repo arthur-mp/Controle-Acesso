@@ -75,8 +75,10 @@ public class UsagesServicoImpl implements IUsagesServico{
     private UsagesDTO UsageToUsageDTO(Usages usage){
         UsagesDTO usagesDTO = new UsagesDTO();
         if(!usage.getId().isEmpty()) usagesDTO.setId(usage.getId());
-        usagesDTO.setDateUsage(usage.getDateUsage());
-        usagesDTO.setTimeUsage(usage.getTimeUsage());
+        usagesDTO.setDateUsageInput(usage.getDateUsageInput());
+        usagesDTO.setTimeUsageInput(usage.getTimeUsageInput());
+        usagesDTO.setDateUsageOutput(usage.getDateUsageOutput());
+        usagesDTO.setTimeUsageOutput(usage.getTimeUsageOutput());
         usagesDTO.setIdUser(usage.getIdUser());
         usagesDTO.setTagUser(usage.getTagUser());
 
@@ -86,8 +88,10 @@ public class UsagesServicoImpl implements IUsagesServico{
     private Usages UsageDTOToUsage(UsagesDTO usageDTO){
         Usages usage = new Usages();
         if(!usageDTO.getId().isEmpty()) usage.setId(usageDTO.getId());
-        usage.setDateUsage(usageDTO.getDateUsage());
-        usage.setTimeUsage(usageDTO.getTimeUsage());
+        usage.setDateUsageInput(usageDTO.getDateUsageInput());
+        usage.setTimeUsageInput(usageDTO.getTimeUsageInput());
+        usage.setDateUsageOutput(usageDTO.getDateUsageOutput());
+        usage.setTimeUsageOutput(usageDTO.getTimeUsageOutput());
         usage.setIdUser(usageDTO.getIdUser());
         usage.setTagUser(usageDTO.getTagUser());
 

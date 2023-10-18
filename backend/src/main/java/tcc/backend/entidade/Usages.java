@@ -9,8 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Usages {
     @Id
     private String id;
-    private String dateUsage;
-    private String timeUsage;
+    private String dateUsageInput;
+    private String timeUsageInput;
+    private String dateUsageOutput;
+    private String timeUsageOutput;
     private String idUser;
     private String tagUser;
 }

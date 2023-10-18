@@ -31,6 +31,16 @@ table{
     background-color: rgb(241 245 249 / 1)!important;
   }
 
+.header{
+width: 100%;
+}
+
+.content-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .header .title {
     font-size: 2rem;
     font-weight: 500;

@@ -7,8 +7,10 @@ import lombok.Data;
 public class UsagesDTO {
     private String id;
     private String nome;
-    private String dateUsage;
-    private String timeUsage;
+    private String dateUsageInput;
+    private String timeUsageInput;
+    private String dateUsageOutput;
+    private String timeUsageOutput;
     private String idUser;
     private String tagUser;
 }

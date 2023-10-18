@@ -28,12 +28,20 @@ export const Config = {
     rotaVeiculoEdita: 'veiculo/edit',
     rotaVeiculoDeleta: 'veiculo/delete',
     
-     // Rotas TagsTemporary
-     rotaTagsTemporaryObtemTodos: 'tagsTemporary/getAll',
-     rotaTagsTemporaryObtem: 'tagsTemporary/getOne',
-     rotaTagsTemporaryCria: 'tagsTemporary/create',
-     rotaTagsTemporaryEdita: 'tagsTemporary/edit',
-     rotaTagsTemporaryDeleta: 'tagsTemporary/delete',
+    // Rotas TagsTemporary
+    rotaTagsTemporaryObtemTodos: 'tagsTemporary/getAll',
+    rotaTagsTemporaryObtem: 'tagsTemporary/getOne',
+    rotaTagsTemporaryCria: 'tagsTemporary/create',
+    rotaTagsTemporaryEdita: 'tagsTemporary/edit',
+    rotaTagsTemporaryDeleta: 'tagsTemporary/delete',
+
+    // Rotas ParametroConfiguracao
+    rotaParametroConfiguracaoObtemTodos: 'parametroConfiguracao/getAll',
+    rotaParametroConfiguracaoObtem: 'parametroConfiguracao/getOne',
+    rotaParametroConfiguracaoCria: 'parametroConfiguracao/create',
+    rotaParametroConfiguracaoEdita: 'parametroConfiguracao/edit',
+    rotaParametroConfiguracaoDeleta: 'parametroConfiguracao/delete',
 
     parametroId: 'id',
+    nomeParametro: 'nomeParametro'
 }

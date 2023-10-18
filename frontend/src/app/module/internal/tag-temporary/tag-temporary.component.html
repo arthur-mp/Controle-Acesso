@@ -1,8 +1,15 @@
 <div class="container">
     <div class="container-header">
         <div class="header">
-            <div class="title">
-                Tags Temporarias
+            <div class="content-title">
+                <div class="title">
+                    Tags Temporarias
+                </div>
+                <div class="cadastro-tags">
+                    <mat-slide-toggle [(ngModel)]="parametroConfiguracaoCadastrarTag.valor" [color]="'primary'" (change)="atualizaParametroConfiguracao()">
+                        Habilitar cadastrar novas tags
+                    </mat-slide-toggle>
+                </div>
             </div>
             <div class="subtitle">
                 {{listTags.length}} tags
