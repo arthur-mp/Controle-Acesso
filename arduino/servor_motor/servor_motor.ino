@@ -1,8 +1,8 @@
 #include <Servo.h>
 
-Servo servo;
+  Servo servo;
 
-int angulo;
+  int angulo;
 
 void setup() {
   servo.attach(2);

@@ -15,4 +15,6 @@ public interface IUsagesServico {
     List<UsagesDTO> getAll();
 
     UsagesDTO delete(String idUsages);
+
+    UsagesDTO buscarPorCodigoTag(String codigoTag);
 }

@@ -3,10 +3,14 @@ package tcc.backend.servico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tcc.backend.dto.LoginDTO;
+import tcc.backend.dto.UsagesDTO;
 import tcc.backend.dto.UsersDTO;
+import tcc.backend.entidade.Usages;
 import tcc.backend.entidade.Users;
 import tcc.backend.repositorio.IUsersRepositorio;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,14 +21,17 @@ public class UsersServicoImpl implements IUsersServico{
     @Autowired
     private IUsersRepositorio usersRepositorio;
 
+    @Autowired
+    private UsagesServicoImpl usagesServico;
+
 
     @Override
-    public UsersDTO create(UsersDTO veiculoDTO) {
-        return createOrEdit(veiculoDTO);
+    public UsersDTO create(UsersDTO userDTO) {
+        return createOrEdit(userDTO);
     }
     @Override
-    public UsersDTO edit(UsersDTO veiculoDTO) {
-        return createOrEdit(veiculoDTO);
+    public UsersDTO edit(UsersDTO userDTO) {
+        return createOrEdit(userDTO);
     }
     @Override
     public UsersDTO getOne(String idUser) {
@@ -74,6 +81,74 @@ public class UsersServicoImpl implements IUsersServico{
         } else {
             return null;
         }
+    }
+
+    @Override
+    public UsersDTO buscaPorCodigoTag(String codigoTag){
+        Optional<Users> user = usersRepositorio.findByCodigoTag(codigoTag);
+
+        if (user.isPresent()) {
+
+            UsagesDTO usagesDTO = usagesServico.buscarPorCodigoTag(codigoTag);
+
+            if(usagesDTO != null && usagesDTO.getDateUsageOutput() == null){
+                // Caso de saida
+                // Preencher dateUsageInput e timeUsageInput com a data e hora atuais
+                LocalDateTime currentDateTime = LocalDateTime.now();
+
+                // Formatar a data e hora no formato desejado
+                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+                String currentDate = currentDateTime.format(dateFormatter);
+                String currentTime = currentDateTime.format(timeFormatter);
+
+                usagesDTO.setDateUsageOutput(currentDate);
+                usagesDTO.setTimeUsageOutput(currentTime);
+
+                UsagesDTO usages = usagesServico.edit(usagesDTO);
+            }else{
+                if((usagesDTO != null && usagesDTO.getDateUsageOutput() != null) || usagesDTO == null) {
+                    // Caso de nova entrada
+                    UsagesDTO newUsage = new UsagesDTO();
+                    newUsage.setId("");
+                    newUsage.setIdUser(user.get().getId());
+                    newUsage.setTagUser(codigoTag);
+
+                    // Preencher dateUsageInput e timeUsageInput com a data e hora atuais
+                    LocalDateTime currentDateTime = LocalDateTime.now();
+
+                    // Formatar a data e hora no formato desejado
+                    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+                    String currentDate = currentDateTime.format(dateFormatter);
+                    String currentTime = currentDateTime.format(timeFormatter);
+
+                    newUsage.setDateUsageInput(currentDate);
+                    newUsage.setTimeUsageInput(currentTime);
+
+                    newUsage.setDateUsageOutput(null);
+                    newUsage.setTimeUsageOutput(null);
+
+                    UsagesDTO usages = usagesServico.create(newUsage);
+
+                    List<String> usagesId = user.get().getUsagesId();
+
+                    if(usagesId == null){
+                        usagesId = new ArrayList<>();
+                    }
+                    usagesId.add(usages.getId());
+                    user.get().setUsagesId(usagesId);
+                    edit(this.userToUserDTO(user.get()));
+                }
+            }
+
+            return userToUserDTO(user.get());
+        } else {
+            return null;
+        }
+
     }
 
     private UsersDTO createOrEdit(UsersDTO usersDTO){

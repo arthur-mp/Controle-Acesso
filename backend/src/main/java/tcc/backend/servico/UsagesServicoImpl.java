@@ -62,6 +62,19 @@ public class UsagesServicoImpl implements IUsagesServico{
         }
         return null;
     }
+
+    @Override
+    public UsagesDTO buscarPorCodigoTag(String codigoTag) {
+        Optional<Usages> usagesOptional = usagesRepositorio.findByTagUserAndNotDateUsageOutput(codigoTag);
+
+        if (usagesOptional.isPresent()){
+            Usages usage = usagesOptional.get();
+            return UsageToUsageDTO(usage);
+        }
+
+        return null;
+    }
+
     private UsagesDTO createOrEdit(UsagesDTO UsagesDTO){
         Usages novoUsage = UsageDTOToUsage(UsagesDTO);
 

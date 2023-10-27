@@ -14,7 +14,7 @@ export class UsagesService{
     _headers: HttpHeaders;
     _urlPublic: string = Config.urlBackendPublico;
 
-    constructor(private _httpClient: HttpClient, private dateTimeFormatService: DateTimeFormatService){
+    constructor(private _httpClient: HttpClient){
         this._headers = new HttpHeaders();
         this._headers.append('Content-Type', 'application/json');
     }
@@ -36,7 +36,7 @@ export class UsagesService{
     // Cria Usages
     public cria(usages: Usages): Observable<Usages>{
 
-        usages = this.setDateAndTimeUsages(usages);
+        //usages = this.setDateAndTimeUsages(usages);
 
         return this._httpClient
             .post<Usages>(this._urlPublic + Config.rotaUsagesCria, usages, { headers: this._headers});
@@ -45,7 +45,7 @@ export class UsagesService{
     // Atualiza Usages
     public atualiza(usages: Usages): Observable<Usages>{
 
-        usages = this.setDateAndTimeUsages(usages);
+        //usages = this.setDateAndTimeUsages(usages);
 
         return this._httpClient
             .put<Usages>(this._urlPublic + Config.rotaUsagesEdita, usages, { headers: this._headers });
@@ -62,17 +62,17 @@ export class UsagesService{
             
     }
 
-    private setDateAndTimeUsages(usages: Usages): Usages{
-        const currentDateAndTime = new Date();
+    // private setDateAndTimeUsages(usages: Usages): Usages{
+    //     const currentDateAndTime = new Date();
 
-        const currentDate: string = this.dateTimeFormatService.formatToDateString(currentDateAndTime);
-        const currentTime: string = this.dateTimeFormatService.formatToTimeString(currentDateAndTime);
+    //     const currentDate: string = this.dateTimeFormatService.formatToDateString(currentDateAndTime);
+    //     const currentTime: string = this.dateTimeFormatService.formatToTimeString(currentDateAndTime);
 
-        usages.dateUsage = currentDate;
-        usages.timeUsage = currentTime;
+    //     usages.dateUsageInput = currentDate;
+    //     usages.timeUsageInput = currentTime;
 
-        return usages;
-    }
+    //     return usages;
+    // }
 
 
 }

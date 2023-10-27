@@ -1,0 +1,42 @@
+.container{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-header{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-table{
+    height: 450px;
+    overflow: auto;
+}
+
+table{
+    width: 100%;
+    table-layout: fixed;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-mdc-row:hover .mat-mdc-cell {
+    background-color: rgb(241 245 249 / 1)!important;
+  }
+
+.header .title {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.header .subtitle {
+    font-size: 0.9rem;
+}

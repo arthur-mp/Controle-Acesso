@@ -3,6 +3,8 @@
 #include <Wire.h>
 #include <SoftwareSerial.h>
 
+#include <Servo.h> //biblioteca do servo motor
+
 #define SS_PIN 10 //PINO SDA
 #define RST_PIN 9 //PINO DE RESET
 
@@ -12,6 +14,15 @@ MFRC522 rfid(SS_PIN, RST_PIN); //cria a instancia da biblioteca
 int st;
 String data;
 
+Servo servo;
+int angulo;
+
+int pinosensor = 6;   //Ligado ao pino "coletor" do sensor óptico 
+int leitura;      //Armazena informações sobre a leitura do sensor  
+
+const int pinoLedVerde = 3; //PINO DIGITAL REFERENTE AO LED VERDE
+const int pinoLedVermelho = 4; //PINO DIGITAL REFERENTE AO LED VERMELHO
+
 void setup() {
   Serial.begin(9600);
   ArduinoUno.begin(9600);
@@ -19,6 +30,17 @@ void setup() {
   SPI.begin();
   rfid.PCD_Init(); //inicia rfid
 
+  servo.attach(2);
+  angulo = 130;
+  servo.write(angulo);
+
+  pinMode(pinosensor, INPUT);   //Define o pino do sensor como entrada
+
+  pinMode(pinoLedVerde, OUTPUT); //DEFINE O PINO COMO SAÍDA
+  pinMode(pinoLedVermelho, OUTPUT); //DEFINE O PINO COMO SAÍDA
+  
+  digitalWrite(pinoLedVerde, LOW); //LED INICIA DESLIGADO
+  digitalWrite(pinoLedVermelho, LOW); //LED INICIA DESLIGADO
 }
 
 void loop() {
@@ -54,20 +76,61 @@ void loop() {
     //recebe o resultado da busca no banco
     delay(5000);
     st = ArduinoUno.read();
+    while(st == -1){
+      st = ArduinoUno.read();
+    }
     Serial.println(st);
 
     if(st == 15){
-        
-        Serial.println("Acesso Liberado");
+      Serial.println("Cadastrou nova tag");
+      notificaViaLed(pinoLedVerde);
+    }else{
+      if(st == 10){
+        Serial.println("Falha para cadastrar nova tag");
+        notificaViaLed(pinoLedVermelho);
+      }else{
+        if(st == 16){
+          Serial.println("Acesso liberado");
+          notificaViaLed(pinoLedVerde);
+          angulo = 0;
+          servo.write(angulo);
 
+          delay(5000);
+          Serial.println("Verificar sensor");
+
+          //Le as informações do pino do sensor
+          leitura = digitalRead(pinosensor); 
+          if(leitura == 0){
+            
+            while(digitalRead(pinosensor) == 0)  
+            {  
+            Serial.println("Objeto detectado no sensor");
+            delay(5000);  
+            }  
+          }else{
+            Serial.println("Objeto não detectado no sensor");
+          }
+
+          angulo = 130;
+          servo.write(angulo);
+
+        }else{
+          Serial.println("Acesso negado");
+          notificaViaLed(pinoLedVermelho);
+        }
       }
-
-       if(st == 10){
-        
-        Serial.println("Acesso Negado");
-
-       }
+    }
 
   }
 
+}
+
+void notificaViaLed(int color){
+  digitalWrite(color, HIGH); //LIGA O LED VERDE
+  delay(3000); //INTERVALO DE 4 SEGUNDOS
+  digitalWrite(color, LOW); //DESLIGA O LED VERDE
+  delay(3000); //INTERVALO DE 4 SEGUNDOS
+  digitalWrite(color, HIGH); //LIGA O LED VERDE
+  delay(3000); //INTERVALO DE 4 SEGUNDOS
+  digitalWrite(color, LOW); //DESLIGA O LED VERDE
 }

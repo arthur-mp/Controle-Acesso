@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tcc.backend.dto.LoginDTO;
+import tcc.backend.dto.TagsTemporaryDTO;
 import tcc.backend.dto.UsersDTO;
 import tcc.backend.servico.IUsersServico;
 
@@ -23,6 +24,11 @@ public class UsersController {
     @GetMapping("/getOne")
     public ResponseEntity<UsersDTO> getOne(@RequestParam("id") String idVeiculo){
         return ResponseEntity.ok(usersServico.getOne(idVeiculo));
+    }
+
+    @GetMapping("/getUserCodeTag")
+    public ResponseEntity<UsersDTO> getUserCodeTag(@RequestParam("codigoTag") String codigoTag){
+        return ResponseEntity.ok(usersServico.buscaPorCodigoTag(codigoTag));
     }
 
     @PostMapping("/create")

@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class UsagesDTO {
     private String id;
-    private String nome;
     private String dateUsageInput;
     private String timeUsageInput;
     private String dateUsageOutput;

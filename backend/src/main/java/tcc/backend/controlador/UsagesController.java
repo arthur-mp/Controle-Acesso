@@ -3,6 +3,7 @@ package tcc.backend.controlador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tcc.backend.dto.TagsTemporaryDTO;
 import tcc.backend.dto.UsagesDTO;
 import tcc.backend.servico.IUsagesServico;
 

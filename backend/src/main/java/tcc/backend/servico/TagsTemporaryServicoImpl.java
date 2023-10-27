@@ -16,10 +16,18 @@ public class TagsTemporaryServicoImpl implements ITagsTemporaryServico{
     @Autowired
     private ITagsTemporaryRepositorio tagsTemporaryRepositorio;
 
+    @Autowired
+    private ParametroConfiguracaoServico parametroConfiguracaoServico;
 
     @Override
     public TagsTemporaryDTO create(TagsTemporaryDTO tagsTemporaryDTO) {
-        return createOrEdit(tagsTemporaryDTO);
+        boolean habilitaCriacao = parametroConfiguracaoServico.getOne("cadastrarTag").getValor();
+
+        if(habilitaCriacao){
+            return createOrEdit(tagsTemporaryDTO);
+        }else{
+            return null;
+        }
     }
     @Override
     public TagsTemporaryDTO edit(TagsTemporaryDTO tagsTemporaryDTO) {

@@ -1,7 +1,9 @@
 export interface Usages{
     id: string;
-    dateUsage: string;
-    timeUsage: string;
+    dateUsageInput: string;
+    timeUsageInput: string;
+    dateUsageOutput: string;
+    timeUsageOutput: string;
     idUser: string;
     tagUser: string;
 }

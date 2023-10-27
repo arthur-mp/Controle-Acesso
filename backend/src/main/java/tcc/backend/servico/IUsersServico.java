@@ -18,4 +18,6 @@ public interface IUsersServico {
     UsersDTO delete(String idUser);
 
     UsersDTO login(LoginDTO loginDTO);
+
+    UsersDTO buscaPorCodigoTag(String codigoTag);
 }
